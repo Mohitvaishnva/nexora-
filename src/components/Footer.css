@@ -1,0 +1,118 @@
+.footer {
+  background-color: var(--color-gray-900);
+  color: var(--color-gray-300);
+  padding: var(--spacing-3xl) 0 0;
+  margin-top: var(--spacing-3xl);
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr;
+  gap: var(--spacing-3xl);
+  padding-bottom: var(--spacing-3xl);
+  border-bottom: 1px solid var(--color-gray-700);
+}
+
+.footer-block h4 {
+  color: var(--color-white);
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+.footer-brand-name {
+  color: var(--color-primary);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+}
+
+.footer-description {
+  line-height: 1.6;
+  color: var(--color-gray-400);
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.footer-link {
+  color: var(--color-gray-400);
+  text-decoration: none;
+  transition: color var(--transition-base);
+  display: inline-block;
+}
+
+.footer-link:hover {
+  color: var(--color-primary);
+  transform: translateX(4px);
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.contact-label {
+  font-weight: 600;
+  color: var(--color-white);
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.contact-value {
+  color: var(--color-gray-400);
+  line-height: 1.6;
+}
+
+.contact-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+.contact-link:hover {
+  color: var(--color-accent);
+}
+
+.footer-bottom {
+  padding: var(--spacing-xl) 0;
+  text-align: center;
+  color: var(--color-gray-500);
+  font-size: var(--font-size-sm);
+}
+
+@media (max-width: 968px) {
+  .footer-content {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-2xl);
+  }
+  
+  .footer-about {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-2xl);
+  }
+  
+  .footer {
+    padding: var(--spacing-2xl) 0 0;
+  }
+  
+  .footer-bottom {
+    padding: var(--spacing-lg) 0;
+  }
+}

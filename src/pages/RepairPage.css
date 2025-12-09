@@ -1,0 +1,45 @@
+.repair-page {
+  background-color: var(--color-white);
+}
+
+.form-section {
+  background: var(--color-gray-50);
+}
+
+.repair-form {
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--color-white);
+  padding: var(--spacing-2xl);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.form-section-title {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-gray-900);
+  margin: var(--spacing-xl) 0 var(--spacing-lg);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 2px solid var(--color-primary);
+}
+
+.form-section-title:first-child {
+  margin-top: 0;
+}
+
+@media (max-width: 640px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .repair-form {
+    padding: var(--spacing-lg);
+  }
+}

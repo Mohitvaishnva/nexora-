@@ -4,11 +4,11 @@ export interface Product {
   category: 'laptop' | 'desktop' | 'printer';
   description: string;
   price: string;
-  features: string[];
+  features?: string[];
   specifications?: Record<string, string>;
   images?: string[];
   stock?: number;
-  visible: boolean;
+  visible?: boolean;
   tags?: string[];
   createdAt: number;
   updatedAt: number;

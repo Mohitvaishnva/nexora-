@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './HomePage.css';
+import homeImage from '../components/images/home.png';
 
 const HomePage: React.FC = () => {
   return (
@@ -16,7 +17,7 @@ const HomePage: React.FC = () => {
                 and on-site assistance for homes and businesses across Delhi NCR.
               </p>
               <div className="hero-cta">
-                <Link to="/laptops" className="btn btn-primary btn-lg">
+                <Link to="/store" className="btn btn-primary btn-lg">
                   Shop HP Laptops
                 </Link>
                 <Link to="/repair" className="btn btn-secondary btn-lg">
@@ -28,7 +29,7 @@ const HomePage: React.FC = () => {
               </div>
             </div>
             <div className="hero-image">
-              [HP Laptop / Workspace Image]
+              <img src={homeImage} alt="HP Laptop Workspace" />
             </div>
           </div>
         </div>
@@ -87,7 +88,7 @@ const HomePage: React.FC = () => {
               <p>
                 Latest HP laptops with cutting-edge technology for students, professionals, and businesses.
               </p>
-              <Link to="/laptops" className="btn btn-primary">
+              <Link to="/store" className="btn btn-primary">
                 Explore Laptops
               </Link>
             </div>
@@ -96,7 +97,7 @@ const HomePage: React.FC = () => {
               <p>
                 Powerful desktops for home, office, and professional use with reliable performance.
               </p>
-              <Link to="/desktops" className="btn btn-primary">
+              <Link to="/store" className="btn btn-primary">
                 Explore Desktops
               </Link>
             </div>
@@ -105,7 +106,7 @@ const HomePage: React.FC = () => {
               <p>
                 High-quality HP printers for home and business printing with genuine supplies available.
               </p>
-              <Link to="/printers" className="btn btn-primary">
+              <Link to="/store" className="btn btn-primary">
                 Explore Printers
               </Link>
             </div>

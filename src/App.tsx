@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import StorePage from './pages/StorePage';
+import CheckoutPage from './pages/CheckoutPage';
 import HPCarePage from './pages/HPCarePage';
 import RepairPage from './pages/RepairPage';
 import SupportPage from './pages/SupportPage';
@@ -21,6 +22,7 @@ const App: React.FC = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/store" element={<StorePage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/hp-care" element={<HPCarePage />} />
           <Route path="/repair" element={<RepairPage />} />
           <Route path="/support" element={<SupportPage />} />

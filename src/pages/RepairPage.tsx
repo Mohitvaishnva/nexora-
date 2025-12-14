@@ -1,4 +1,6 @@
 import React, { useState, FormEvent } from 'react';
+import { database } from '../config/firebase';
+import { ref, push } from 'firebase/database';
 import './RepairPage.css';
 import './ServicesPage.css';
 
@@ -43,6 +45,7 @@ const RepairPage: React.FC = () => {
   });
 
   const [errors, setErrors] = useState<Partial<Record<keyof RepairFormData, string>>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -66,12 +69,58 @@ const RepairPage: React.FC = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (validate()) {
-      alert('Repair request submitted successfully! We will contact you shortly.');
-      // Here you would typically send data to a server
-      console.log('Form data:', formData);
+      setIsSubmitting(true);
+      try {
+        // Save to Firebase Realtime Database
+        const repairRequestsRef = ref(database, 'repairRequests');
+        const newRequest = {
+          ...formData,
+          status: 'new',
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        };
+        
+        await push(repairRequestsRef, newRequest);
+
+        alert('Repair request submitted successfully! We will contact you shortly.');
+        
+        // Reset form
+        setFormData({
+          fullName: '',
+          phone: '',
+          email: '',
+          address: '',
+          deviceType: '',
+          brand: '',
+          model: '',
+          serialNumber: '',
+          purchaseDate: '',
+          warrantyStatus: '',
+          issueDescription: '',
+          urgency: '',
+          serviceType: '',
+          preferredDate: '',
+        });
+      } catch (error: any) {
+        console.error('Error submitting repair request:', error);
+        
+        // More detailed error message
+        let errorMessage = 'Failed to submit repair request. ';
+        if (error.code === 'PERMISSION_DENIED') {
+          errorMessage += 'Database permission denied. Please contact support.';
+        } else if (error.message) {
+          errorMessage += error.message;
+        } else {
+          errorMessage += 'Please try again or call us at +91 7500858389.';
+        }
+        
+        alert(errorMessage);
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -344,8 +393,13 @@ const RepairPage: React.FC = () => {
               />
             </div>
 
-            <button type="submit" className="btn btn-primary btn-lg" style={{ width: '100%', marginTop: 'var(--spacing-lg)' }}>
-              Submit Repair Request
+            <button 
+              type="submit" 
+              className="btn btn-primary btn-lg" 
+              style={{ width: '100%', marginTop: 'var(--spacing-lg)' }}
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? 'Submitting...' : 'Submit Repair Request'}
             </button>
           </form>
         </div>

@@ -1,4 +1,6 @@
 import React, { useState, FormEvent } from 'react';
+import { database } from '../config/firebase';
+import { ref, push } from 'firebase/database';
 import './RepairPage.css';
 
 interface ContactFormData {
@@ -19,6 +21,7 @@ const ContactPage: React.FC = () => {
   });
 
   const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -41,12 +44,40 @@ const ContactPage: React.FC = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (validate()) {
-      alert('Message sent successfully! We will get back to you soon.');
-      console.log('Form data:', formData);
-      setFormData({ fullName: '', phone: '', email: '', subject: '', message: '' });
+      setIsSubmitting(true);
+      try {
+        // Save to Firebase Realtime Database
+        const contactInquiriesRef = ref(database, 'contactInquiries');
+        const newInquiry = {
+          ...formData,
+          status: 'new',
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        };
+        
+        await push(contactInquiriesRef, newInquiry);
+
+        alert('Message sent successfully! We will get back to you soon.');
+        setFormData({ fullName: '', phone: '', email: '', subject: '', message: '' });
+      } catch (error: any) {
+        console.error('Error submitting contact form:', error);
+        
+        let errorMessage = 'Failed to send message. ';
+        if (error.code === 'PERMISSION_DENIED') {
+          errorMessage += 'Database permission denied. Please contact support.';
+        } else if (error.message) {
+          errorMessage += error.message;
+        } else {
+          errorMessage += 'Please try again or call us at +91 7500858389.';
+        }
+        
+        alert(errorMessage);
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -192,8 +223,13 @@ const ContactPage: React.FC = () => {
               {errors.message && <div className="form-error">{errors.message}</div>}
             </div>
 
-            <button type="submit" className="btn btn-primary btn-lg" style={{ width: '100%' }}>
-              Send Message
+            <button 
+              type="submit" 
+              className="btn btn-primary btn-lg" 
+              style={{ width: '100%' }}
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
           </form>
         </div>

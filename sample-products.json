@@ -1,0 +1,317 @@
+{
+  "products": {
+    "-product1": {
+      "name": "HP Pavilion 15",
+      "category": "laptop",
+      "description": "Perfect for everyday computing, entertainment, and light work",
+      "price": "₹45,000",
+      "features": [
+        "Intel Core i5-12450H",
+        "8GB DDR4 RAM",
+        "512GB SSD",
+        "15.6\" Full HD Display"
+      ],
+      "specifications": {
+        "processor": "Intel Core i5-12450H (2.0 GHz base, up to 4.4 GHz)",
+        "ram": "8GB DDR4 3200MHz",
+        "storage": "512GB PCIe NVMe SSD",
+        "display": "15.6\" Full HD (1920x1080) IPS",
+        "graphics": "Intel UHD Graphics",
+        "battery": "41 Wh, up to 7 hours",
+        "weight": "1.75 kg"
+      },
+      "images": [],
+      "stock": 10,
+      "visible": true,
+      "createdAt": 1733702400000,
+      "updatedAt": 1733702400000
+    },
+    "-product2": {
+      "name": "HP Envy 13",
+      "category": "laptop",
+      "description": "Premium ultrabook with powerful performance for creators",
+      "price": "₹85,000",
+      "features": [
+        "Intel Core i7-1355U",
+        "16GB LPDDR5 RAM",
+        "1TB SSD",
+        "13.3\" 2.5K Display"
+      ],
+      "specifications": {
+        "processor": "Intel Core i7-1355U (up to 5.0 GHz)",
+        "ram": "16GB LPDDR5 4800MHz",
+        "storage": "1TB PCIe NVMe SSD",
+        "display": "13.3\" 2.5K (2560x1600) OLED",
+        "graphics": "Intel Iris Xe Graphics",
+        "battery": "66 Wh, up to 12 hours",
+        "weight": "1.3 kg"
+      },
+      "images": [],
+      "stock": 5,
+      "visible": true,
+      "createdAt": 1733702400000,
+      "updatedAt": 1733702400000
+    },
+    "-product3": {
+      "name": "HP EliteBook 840 G10",
+      "category": "laptop",
+      "description": "Business-class laptop with enterprise-grade security",
+      "price": "₹1,20,000",
+      "features": [
+        "Intel Core i7-1355U vPro",
+        "32GB DDR5 RAM",
+        "1TB SSD",
+        "14\" Full HD Display"
+      ],
+      "specifications": {
+        "processor": "Intel Core i7-1355U vPro",
+        "ram": "32GB DDR5 5200MHz",
+        "storage": "1TB PCIe NVMe SSD",
+        "display": "14\" Full HD (1920x1080) IPS",
+        "graphics": "Intel Iris Xe Graphics",
+        "security": "TPM 2.0, Fingerprint Reader, IR Camera",
+        "battery": "51 Wh, up to 14 hours",
+        "weight": "1.36 kg"
+      },
+      "images": [],
+      "stock": 3,
+      "visible": true,
+      "createdAt": 1733702400000,
+      "updatedAt": 1733702400000
+    },
+    "-product4": {
+      "name": "HP Victus 15",
+      "category": "laptop",
+      "description": "Gaming laptop with powerful graphics and high refresh rate",
+      "price": "₹75,000",
+      "features": [
+        "AMD Ryzen 5 7535HS",
+        "16GB DDR5 RAM",
+        "512GB SSD",
+        "NVIDIA RTX 3050 4GB"
+      ],
+      "specifications": {
+        "processor": "AMD Ryzen 5 7535HS (3.3 GHz base, up to 4.55 GHz)",
+        "ram": "16GB DDR5 4800MHz",
+        "storage": "512GB PCIe NVMe SSD",
+        "display": "15.6\" Full HD (1920x1080) 144Hz IPS",
+        "graphics": "NVIDIA GeForce RTX 3050 4GB",
+        "cooling": "Dual Fan with large vents",
+        "battery": "70 Wh",
+        "weight": "2.29 kg"
+      },
+      "images": [],
+      "stock": 7,
+      "visible": true,
+      "createdAt": 1733702400000,
+      "updatedAt": 1733702400000
+    },
+    "-product5": {
+      "name": "HP All-in-One 24-df1",
+      "category": "desktop",
+      "description": "Space-saving all-in-one PC with touchscreen",
+      "price": "₹50,000",
+      "features": [
+        "Intel Core i5-1235U",
+        "8GB DDR4 RAM",
+        "512GB SSD",
+        "23.8\" Full HD Touchscreen"
+      ],
+      "specifications": {
+        "processor": "Intel Core i5-1235U",
+        "ram": "8GB DDR4 3200MHz",
+        "storage": "512GB PCIe NVMe SSD",
+        "display": "23.8\" Full HD (1920x1080) IPS Touchscreen",
+        "graphics": "Intel UHD Graphics",
+        "connectivity": "Wi-Fi 6, Bluetooth 5.2",
+        "ports": "USB-A, USB-C, HDMI-in, Audio Jack"
+      },
+      "images": [],
+      "stock": 6,
+      "visible": true,
+      "createdAt": 1733702400000,
+      "updatedAt": 1733702400000
+    },
+    "-product6": {
+      "name": "HP EliteDesk 800 G9",
+      "category": "desktop",
+      "description": "Professional desktop for business environments",
+      "price": "₹65,000",
+      "features": [
+        "Intel Core i7-13700",
+        "16GB DDR5 RAM",
+        "1TB SSD",
+        "Windows 11 Pro"
+      ],
+      "specifications": {
+        "processor": "Intel Core i7-13700 (16 cores, up to 5.2 GHz)",
+        "ram": "16GB DDR5 4800MHz (upgradable to 64GB)",
+        "storage": "1TB PCIe NVMe SSD",
+        "graphics": "Intel UHD Graphics 770",
+        "os": "Windows 11 Pro",
+        "security": "TPM 2.0, HP Sure Start",
+        "formFactor": "Mini Tower"
+      },
+      "images": [],
+      "stock": 4,
+      "visible": true,
+      "createdAt": 1733702400000,
+      "updatedAt": 1733702400000
+    },
+    "-product7": {
+      "name": "HP Z2 Tower G9",
+      "category": "desktop",
+      "description": "Workstation-class power for demanding professional workloads",
+      "price": "₹1,50,000",
+      "features": [
+        "Intel Xeon W-1350",
+        "32GB ECC DDR4 RAM",
+        "1TB NVMe + 2TB HDD",
+        "NVIDIA RTX A2000 12GB"
+      ],
+      "specifications": {
+        "processor": "Intel Xeon W-1350 (6 cores, up to 5.0 GHz)",
+        "ram": "32GB ECC DDR4 3200MHz (upgradable to 128GB)",
+        "storage": "1TB NVMe SSD + 2TB HDD",
+        "graphics": "NVIDIA RTX A2000 12GB",
+        "os": "Windows 11 Pro for Workstations",
+        "certification": "ISV Certified",
+        "warranty": "3 years on-site"
+      },
+      "images": [],
+      "stock": 2,
+      "visible": true,
+      "createdAt": 1733702400000,
+      "updatedAt": 1733702400000
+    },
+    "-product8": {
+      "name": "HP DeskJet 2820e",
+      "category": "printer",
+      "description": "Affordable all-in-one inkjet printer for home use",
+      "price": "₹8,500",
+      "features": [
+        "Print, Scan, Copy",
+        "Wireless Connectivity",
+        "HP+ Smart Features",
+        "Mobile Printing"
+      ],
+      "specifications": {
+        "printSpeed": "Up to 7.5 ppm (black), 5.5 ppm (color)",
+        "printResolution": "Up to 4800 x 1200 dpi (color)",
+        "scanResolution": "Up to 1200 dpi",
+        "paperCapacity": "60 sheets input tray",
+        "connectivity": "Wi-Fi, USB 2.0",
+        "mobileApp": "HP Smart App"
+      },
+      "images": [],
+      "stock": 15,
+      "visible": true,
+      "createdAt": 1733702400000,
+      "updatedAt": 1733702400000
+    },
+    "-product9": {
+      "name": "HP LaserJet Pro M404dn",
+      "category": "printer",
+      "description": "Fast, reliable black-and-white laser printing for office",
+      "price": "₹18,000",
+      "features": [
+        "Fast 40 ppm Printing",
+        "Automatic Duplex",
+        "Network Ready",
+        "Low Cost per Page"
+      ],
+      "specifications": {
+        "printSpeed": "Up to 40 ppm",
+        "printResolution": "1200 x 1200 dpi",
+        "firstPageOut": "As fast as 5.6 seconds",
+        "paperCapacity": "350 sheets (100-sheet multipurpose tray + 250-sheet tray)",
+        "connectivity": "Ethernet, USB 2.0",
+        "monthlyDuty": "Up to 80,000 pages",
+        "duplex": "Automatic (standard)"
+      },
+      "images": [],
+      "stock": 8,
+      "visible": true,
+      "createdAt": 1733702400000,
+      "updatedAt": 1733702400000
+    },
+    "-product10": {
+      "name": "HP Color LaserJet Pro MFP M283fdw",
+      "category": "printer",
+      "description": "Color laser all-in-one with fax and duplex printing",
+      "price": "₹35,000",
+      "features": [
+        "Print, Scan, Copy, Fax",
+        "Color Laser",
+        "Automatic Duplex",
+        "Touchscreen Display"
+      ],
+      "specifications": {
+        "printSpeed": "Up to 22 ppm (black and color)",
+        "printResolution": "Up to 600 x 600 dpi",
+        "scanResolution": "Up to 1200 dpi",
+        "paperCapacity": "250-sheet input tray",
+        "connectivity": "Wi-Fi, Ethernet, USB 2.0",
+        "display": "2.7\" touchscreen",
+        "adf": "50-sheet automatic document feeder"
+      },
+      "images": [],
+      "stock": 5,
+      "visible": true,
+      "createdAt": 1733702400000,
+      "updatedAt": 1733702400000
+    },
+    "-product11": {
+      "name": "HP OfficeJet Pro 9025e",
+      "category": "printer",
+      "description": "Professional all-in-one inkjet printer with high-yield cartridges",
+      "price": "₹22,000",
+      "features": [
+        "Print, Scan, Copy, Fax",
+        "Auto Document Feeder",
+        "Duplex Printing",
+        "HP+ Smart Features"
+      ],
+      "specifications": {
+        "printSpeed": "Up to 24 ppm (black), 20 ppm (color)",
+        "printResolution": "Up to 4800 x 1200 dpi",
+        "paperCapacity": "250-sheet tray",
+        "connectivity": "Wi-Fi, Ethernet, USB",
+        "display": "2.65\" touchscreen",
+        "adf": "35-sheet automatic document feeder",
+        "duplex": "Automatic"
+      },
+      "images": [],
+      "stock": 10,
+      "visible": true,
+      "createdAt": 1733702400000,
+      "updatedAt": 1733702400000
+    },
+    "-product12": {
+      "name": "HP PageWide Pro 477dw",
+      "category": "printer",
+      "description": "High-volume enterprise printer with PageWide technology",
+      "price": "₹80,000",
+      "features": [
+        "Fast 55 ppm",
+        "PageWide Technology",
+        "High Paper Capacity",
+        "Enterprise Security"
+      ],
+      "specifications": {
+        "printSpeed": "Up to 55 ppm (black and color)",
+        "printResolution": "Up to 2400 x 1200 dpi",
+        "paperCapacity": "500 sheets (expandable to 1,500)",
+        "connectivity": "Gigabit Ethernet, Wi-Fi, USB 2.0",
+        "monthlyDuty": "Up to 75,000 pages",
+        "security": "Secure Boot, Whitelisting",
+        "duplex": "Automatic"
+      },
+      "images": [],
+      "stock": 3,
+      "visible": true,
+      "createdAt": 1733702400000,
+      "updatedAt": 1733702400000
+    }
+  }
+}

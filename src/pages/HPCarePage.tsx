@@ -21,7 +21,7 @@ const HPCarePage: React.FC = () => {
       <section className="section">
         <div className="container">
           <div className="section-header">
-            <h2>HP Care Services</h2>
+            <h2>HP Care Service Features</h2>
             <p className="subtitle">Comprehensive protection and support for your HP devices</p>
           </div>
           <div className="service-features-grid">

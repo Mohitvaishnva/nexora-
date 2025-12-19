@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { database, storage } from '../config/firebase';
 import { ref, onValue } from 'firebase/database';
 import { ref as storageRef, getDownloadURL } from 'firebase/storage';
@@ -16,12 +16,31 @@ interface CartItem extends Product {
 
 const StorePage: React.FC = () => {
   const navigate = useNavigate();
-  const [activeCategory, setActiveCategory] = useState<Category>('all');
-  const [conditionFilter, setConditionFilter] = useState<ConditionFilter>('all');
+  const [searchParams] = useSearchParams();
+  
+  // Get category and condition from URL parameters
+  const categoryParam = searchParams.get('category') as Category | null;
+  const conditionParam = searchParams.get('condition') as ConditionFilter | null;
+  
+  const [activeCategory, setActiveCategory] = useState<Category>(categoryParam || 'all');
+  const [conditionFilter, setConditionFilter] = useState<ConditionFilter>(conditionParam || 'all');
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [cart, setCart] = useState<CartItem[]>([]);
   const [showCart, setShowCart] = useState(false);
+  const [wishlist, setWishlist] = useState<Set<string>>(new Set());
+
+  // Update filters when URL params change
+  useEffect(() => {
+    if (categoryParam) {
+      setActiveCategory(categoryParam);
+    }
+    if (conditionParam) {
+      setConditionFilter(conditionParam);
+    }
+    // Scroll to top when page loads or filters change
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [categoryParam, conditionParam]);
 
   const addToCart = (product: Product) => {
     setCart(prevCart => {
@@ -36,6 +55,18 @@ const StorePage: React.FC = () => {
       return [...prevCart, { ...product, quantity: 1 }];
     });
     alert(`${product.name} added to cart!`);
+  };
+
+  const toggleWishlist = (productId: string) => {
+    setWishlist(prev => {
+      const newWishlist = new Set(prev);
+      if (newWishlist.has(productId)) {
+        newWishlist.delete(productId);
+      } else {
+        newWishlist.add(productId);
+      }
+      return newWishlist;
+    });
   };
 
   const removeFromCart = (productId: string) => {
@@ -528,103 +559,90 @@ const StorePage: React.FC = () => {
           ) : (
             <div className="grid grid-2">
               {filteredData.products.map((product) => (
-                <div key={product.id} className="card">
+                <div key={product.id} className="modern-product-card">
+                  <button
+                    className={`wishlist-btn ${wishlist.has(product.id) ? 'active' : ''}`}
+                    onClick={() => toggleWishlist(product.id)}
+                    aria-label="Add to wishlist"
+                  >
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill={wishlist.has(product.id) ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2">
+                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                  </button>
+                  
                   {activeCategory === 'all' && (
-                    <span className="badge" style={{ marginBottom: 'var(--spacing-sm)' }}>
+                    <span className="modern-category-badge">
                       {getCategoryLabel(product.category)}
                     </span>
                   )}
-                  <div style={{
-                    width: '100%',
-                    height: '200px',
-                    backgroundColor: 'white',
-                    borderRadius: 'var(--border-radius-md)',
-                    marginBottom: 'var(--spacing-md)',
-                    overflow: 'hidden',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                  }}>
-                    {product.images && product.images.length > 0 ? (
-                      <img 
-                        src={product.images[0]} 
-                        alt={product.name}
-                        style={{ 
-                          width: '100%', 
-                          height: '100%', 
-                          objectFit: 'cover'
-                        }}
-                        onError={(e) => {
-                          // Fallback if image fails to load
-                          e.currentTarget.style.display = 'none';
-                          e.currentTarget.parentElement!.innerHTML = '<div style="color: var(--color-gray-400); font-size: 3rem;">📦</div>';
-                        }}
-                      />
-                    ) : (
-                      <div style={{ color: 'var(--color-gray-400)', fontSize: '3rem' }}>
-                        {product.category === 'laptop' ? '💻' : product.category === 'printer' ? '🖨️' : '🖥️'}
+                  
+                  <Link to={`/product/${product.id}`} className="product-image-link">
+                    <div className="modern-product-image">
+                      {product.images && product.images.length > 0 ? (
+                        <img 
+                          src={product.images[0]} 
+                          alt={product.name}
+                          onError={(e) => {
+                            e.currentTarget.style.display = 'none';
+                            const parent = e.currentTarget.parentElement;
+                            if (parent) {
+                              const placeholder = document.createElement('div');
+                              placeholder.className = 'image-placeholder-icon';
+                              placeholder.textContent = product.category === 'laptop' ? '💻' : product.category === 'printer' ? '🖨️' : '🖥️';
+                              parent.appendChild(placeholder);
+                            }
+                          }}
+                        />
+                      ) : (
+                        <div className="image-placeholder-icon">
+                          {product.category === 'laptop' ? '💻' : product.category === 'printer' ? '🖨️' : '🖥️'}
+                        </div>
+                      )}
+                    </div>
+                  </Link>
+                  
+                  <div className="modern-product-info">
+                    <Link to={`/product/${product.id}`} className="modern-product-title-link">
+                      <h3 className="modern-product-title">{product.name}</h3>
+                    </Link>
+                    
+                    {product.specifications?.Condition && product.specifications.Condition.toLowerCase() !== 'new' && (
+                      <span className="modern-condition-badge">
+                        {product.specifications.Condition}
+                      </span>
+                    )}
+                    
+                    <p className="modern-product-description">{product.description}</p>
+                    
+                    <div className="modern-price-section">
+                      <div className="modern-price-group">
+                        <span className="modern-current-price">{product.price}</span>
+                        {product.specifications?.MRP && product.specifications.MRP !== product.price && (
+                          <span className="modern-original-price">{product.specifications.MRP}</span>
+                        )}
+                      </div>
+                      {product.specifications?.Discount && parseFloat(product.specifications.Discount) > 0 && (
+                        <span className="modern-discount-badge">
+                          {product.specifications.Discount} OFF
+                        </span>
+                      )}
+                    </div>
+                    
+                    {product.stock !== undefined && (
+                      <div className="modern-stock-status">
+                        <span className={product.stock > 0 ? 'in-stock' : 'out-of-stock'}>
+                          {product.stock > 0 ? `In Stock (${product.stock})` : 'Out of Stock'}
+                        </span>
                       </div>
                     )}
-                  </div>
-                  <h3>{product.name}</h3>
-                  {product.specifications?.Condition && product.specifications.Condition.toLowerCase() !== 'new' && (
-                    <span 
-                      className="badge" 
-                      style={{ 
-                        backgroundColor: '#f59e0b', 
-                        color: 'white',
-                        marginBottom: 'var(--spacing-sm)',
-                        display: 'inline-block'
-                      }}
-                    >
-                      {product.specifications.Condition}
-                    </span>
-                  )}
-                  <div style={{ marginBottom: 'var(--spacing-md)' }}>
-                    <p className="price" style={{ marginBottom: '0.25rem' }}>{product.price}</p>
-                    {product.specifications?.MRP && product.specifications.MRP !== product.price && (
-                      <p style={{ 
-                        fontSize: 'var(--font-size-sm)', 
-                        color: 'var(--color-gray-500)',
-                        textDecoration: 'line-through',
-                        marginBottom: '0.25rem'
-                      }}>
-                        MRP: {product.specifications.MRP}
-                      </p>
-                    )}
-                    {product.specifications?.Discount && parseFloat(product.specifications.Discount) > 0 && (
-                      <span className="badge badge-success" style={{ fontSize: 'var(--font-size-xs)' }}>
-                        {product.specifications.Discount} OFF
-                      </span>
-                    )}
-                  </div>
-                  <p style={{ marginBottom: 'var(--spacing-md)', fontSize: 'var(--font-size-sm)', color: 'var(--color-gray-600)' }}>
-                    {product.description}
-                  </p>
-                  {product.stock !== undefined && (
-                    <div style={{ marginBottom: 'var(--spacing-md)' }}>
-                      <span className={`badge ${product.stock > 0 ? 'badge-success' : 'badge-error'}`}>
-                        {product.stock > 0 ? `In Stock (${product.stock})` : 'Out of Stock'}
-                      </span>
-                    </div>
-                  )}
-                  {product.features && product.features.length > 0 && (
-                    <ul className="feature-list">
-                      {product.features.map((feature, idx) => (
-                        <li key={idx}>{feature}</li>
-                      ))}
-                    </ul>
-                  )}
-                  <div style={{ marginTop: 'var(--spacing-lg)', display: 'flex', gap: 'var(--spacing-sm)', flexWrap: 'wrap' }}>
+                    
                     <button
                       onClick={() => addToCart(product)}
-                      className="btn btn-primary"
+                      className="modern-add-to-cart-btn"
                       disabled={product.stock === 0}
-                      style={{ flex: '1 1 auto' }}
                     >
-                      🛒 Add to Cart
+                      Add to cart
                     </button>
-                    <Link to="/contact" className="btn btn-secondary" style={{ flex: '1 1 auto' }}>Get Quote</Link>
                   </div>
                 </div>
               ))}

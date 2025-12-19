@@ -75,41 +75,55 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Products Overview */}
-      <section className="section" style={{ backgroundColor: 'var(--color-gray-50)' }}>
+      {/* Products Overview - Circular Category Design */}
+      <section className="section products-category-section">
         <div className="container">
           <div className="section-header">
             <h2>Our Products</h2>
-            <p className="subtitle">Latest HP technology for all your needs.</p>
+            <p className="subtitle">Browse by category to find the perfect HP product for your needs</p>
           </div>
-          <div className="grid grid-3">
-            <div className="product-card">
-              <h3>HP Laptops</h3>
-              <p>
-                Latest HP laptops with cutting-edge technology for students, professionals, and businesses.
-              </p>
-              <Link to="/store" className="btn btn-primary">
-                Explore Laptops
-              </Link>
-            </div>
-            <div className="product-card">
-              <h3>HP Desktops</h3>
-              <p>
-                Powerful desktops for home, office, and professional use with reliable performance.
-              </p>
-              <Link to="/store" className="btn btn-primary">
-                Explore Desktops
-              </Link>
-            </div>
-            <div className="product-card">
-              <h3>HP Printers</h3>
-              <p>
-                High-quality HP printers for home and business printing with genuine supplies available.
-              </p>
-              <Link to="/store" className="btn btn-primary">
-                Explore Printers
-              </Link>
-            </div>
+          <div className="category-circles-grid">
+            <Link to="/store?category=laptop&condition=second-hand" className="category-circle-item">
+              <div className="category-circle">
+                <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&h=400&fit=crop" alt="Refurbished Laptop" />
+              </div>
+              <div className="category-label">Refurbished Laptop</div>
+            </Link>
+            
+            <Link to="/store?category=laptop&condition=new" className="category-circle-item">
+              <div className="category-circle">
+                <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=400&fit=crop" alt="New Laptop" />
+              </div>
+              <div className="category-label">New Laptop</div>
+            </Link>
+            
+            <Link to="/store?category=desktop&condition=second-hand" className="category-circle-item">
+              <div className="category-circle">
+                <img src="https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=400&h=400&fit=crop" alt="Refurbished Desktop" />
+              </div>
+              <div className="category-label">Refurbished Desktop</div>
+            </Link>
+            
+            <Link to="/store?category=desktop&condition=new" className="category-circle-item">
+              <div className="category-circle">
+                <img src="https://images.unsplash.com/photo-1593640495253-23196b27a87f?w=400&h=400&fit=crop" alt="New Desktop" />
+              </div>
+              <div className="category-label">New Desktop</div>
+            </Link>
+            
+            <Link to="/store?category=printer&condition=second-hand" className="category-circle-item">
+              <div className="category-circle">
+                <img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=400&h=400&fit=crop" alt="Refurbished Printer" />
+              </div>
+              <div className="category-label">Refurbished Printer</div>
+            </Link>
+            
+            <Link to="/store?category=printer&condition=new" className="category-circle-item">
+              <div className="category-circle">
+                <img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=400&h=400&fit=crop" alt="New Printer" />
+              </div>
+              <div className="category-label">New Printer</div>
+            </Link>
           </div>
         </div>
       </section>

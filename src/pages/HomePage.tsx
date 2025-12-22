@@ -75,55 +75,84 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Products Overview - Circular Category Design */}
-      <section className="section products-category-section">
+      {/* Premium Technology Products Section */}
+      <section className="section products-section">
         <div className="container">
           <div className="section-header">
-            <h2>Our Products</h2>
-            <p className="subtitle">Browse by category to find the perfect HP product for your needs</p>
+            <h2>Premium Technology Products</h2>
+            <p className="subtitle">Discover our extensive range of technology solutions for home and business</p>
           </div>
-          <div className="category-circles-grid">
-            <Link to="/store?category=laptop&condition=second-hand" className="category-circle-item">
-              <div className="category-circle">
-                <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&h=400&fit=crop" alt="Refurbished Laptop" />
+          <div className="products-grid">
+            {/* Laptops Card */}
+            <div className="product-category-card">
+              <div className="product-card-image">
+                <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&h=400&fit=crop" alt="Laptops" />
+                <span className="product-badge">Best Sellers</span>
               </div>
-              <div className="category-label">Refurbished Laptop</div>
-            </Link>
-            
-            <Link to="/store?category=laptop&condition=new" className="category-circle-item">
-              <div className="category-circle">
-                <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=400&fit=crop" alt="New Laptop" />
+              <div className="product-card-body">
+                <div className="product-card-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="2" y1="20" x2="22" y2="20"></line>
+                  </svg>
+                </div>
+                <h3>Laptops</h3>
+                <p>Business & Gaming laptops from HP, Dell, Lenovo. Thin-and-light models for professionals.</p>
+                <Link to="/laptops" className="explore-link">
+                  Explore Products <span className="arrow">→</span>
+                </Link>
               </div>
-              <div className="category-label">New Laptop</div>
-            </Link>
-            
-            <Link to="/store?category=desktop&condition=second-hand" className="category-circle-item">
-              <div className="category-circle">
-                <img src="https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=400&h=400&fit=crop" alt="Refurbished Desktop" />
+            </div>
+
+            {/* Printers Card */}
+            <div className="product-category-card">
+              <div className="product-card-image">
+                <img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=600&h=400&fit=crop" alt="Printers" />
+                <span className="product-badge">HP Authorized</span>
               </div>
-              <div className="category-label">Refurbished Desktop</div>
-            </Link>
-            
-            <Link to="/store?category=desktop&condition=new" className="category-circle-item">
-              <div className="category-circle">
-                <img src="https://images.unsplash.com/photo-1593640495253-23196b27a87f?w=400&h=400&fit=crop" alt="New Desktop" />
+              <div className="product-card-body">
+                <div className="product-card-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                    <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                    <rect x="6" y="14" width="12" height="8"></rect>
+                  </svg>
+                </div>
+                <h3>Printers</h3>
+                <p>HP & other brand printers – Inkjet, LaserJet, All-in-One solutions for home & office.</p>
+                <Link to="/printers" className="explore-link">
+                  Explore Products <span className="arrow">→</span>
+                </Link>
               </div>
-              <div className="category-label">New Desktop</div>
-            </Link>
-            
-            <Link to="/store?category=printer&condition=second-hand" className="category-circle-item">
-              <div className="category-circle">
-                <img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=400&h=400&fit=crop" alt="Refurbished Printer" />
+            </div>
+
+            {/* Desktops Card */}
+            <div className="product-category-card">
+              <div className="product-card-image">
+                <img src="https://images.unsplash.com/photo-1593640495253-23196b27a87f?w=600&h=400&fit=crop" alt="Desktops & Workstations" />
+                <span className="product-badge">Custom Build</span>
               </div>
-              <div className="category-label">Refurbished Printer</div>
-            </Link>
-            
-            <Link to="/store?category=printer&condition=new" className="category-circle-item">
-              <div className="category-circle">
-                <img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=400&h=400&fit=crop" alt="New Printer" />
+              <div className="product-card-body">
+                <div className="product-card-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                  </svg>
+                </div>
+                <h3>Desktops & Workstations</h3>
+                <p>Custom builds, branded desktops & professional workstations for demanding tasks.</p>
+                <Link to="/desktops" className="explore-link">
+                  Explore Products <span className="arrow">→</span>
+                </Link>
               </div>
-              <div className="category-label">New Printer</div>
-            </Link>
+            </div>
+          </div>
+
+          {/* Custom Quote CTA */}
+          <div className="custom-quote-cta">
+            <p>Need something specific? We can source any technology product for you.</p>
+            <Link to="/contact" className="btn btn-quote">Custom Quote Request</Link>
           </div>
         </div>
       </section>

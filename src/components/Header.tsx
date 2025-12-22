@@ -28,6 +28,7 @@ const Header: React.FC = () => {
     { path: '/hp-care', label: 'HP Care' },
     { path: '/repair', label: 'Repair' },
     { path: '/support', label: 'Support' },
+    { path: '/status', label: 'Track Status' },
     { path: '/offers', label: 'Offers' },
     { path: '/contact', label: 'Contact' },
   ];

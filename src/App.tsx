@@ -12,6 +12,7 @@ import RepairPage from './pages/RepairPage';
 import SupportPage from './pages/SupportPage';
 import OffersPage from './pages/OffersPage';
 import ContactPage from './pages/ContactPage';
+import StatusPage from './pages/StatusPage';
 import './styles/global.css';
 
 const App: React.FC = () => {
@@ -30,6 +31,7 @@ const App: React.FC = () => {
           <Route path="/support" element={<SupportPage />} />
           <Route path="/offers" element={<OffersPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/status" element={<StatusPage />} />
         </Routes>
         <Footer />
       </div>
